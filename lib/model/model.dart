@@ -22,4 +22,16 @@ class Todo {
         'description': description,
         'is_completed': isCompleted,
       };
+
+  Todo copyWith({
+    String? title,
+    String? description,
+    bool? isCompleted,
+  }) {
+    return Todo(
+      title: title ?? this.title,
+      description: description ?? this.description,
+      isCompleted: isCompleted ?? this.isCompleted,
+    );
+  }
 }

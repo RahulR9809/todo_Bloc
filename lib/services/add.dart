@@ -3,23 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:todoappbloc/api/apiservices.dart';
 import 'package:todoappbloc/model/model.dart';
 showNameDialog(BuildContext context) {
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _taskController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController taskController = TextEditingController();
    ApiServices apiServices=ApiServices();
 
   showDialog(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: Center(child: Text('Add Here')),
-        content: Container(
+        title: const Center(child: Text('Add Here')),
+        content: SizedBox(
           width: 300.0,
           height: 220.0,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextFormField(
-                controller: _nameController,
+                controller: nameController,
                 decoration: InputDecoration(
                   labelText: 'Add title',
                   border: OutlineInputBorder(
@@ -27,9 +27,9 @@ showNameDialog(BuildContext context) {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               TextFormField(
-                controller: _taskController,
+                controller: taskController,
                 decoration: InputDecoration(
                   labelText: 'Add task',
                   border: OutlineInputBorder(
@@ -44,8 +44,8 @@ showNameDialog(BuildContext context) {
         actions: <Widget>[
           ElevatedButton(
             onPressed: () async {
-              final String title = _nameController.text.trim();
-              final String description = _taskController.text.trim();
+              final String title = nameController.text.trim();
+              final String description = taskController.text.trim();
               if (title.isNotEmpty && description.isNotEmpty) {
                 final Todo newTodo = Todo(
                   title: title,
@@ -55,6 +55,7 @@ showNameDialog(BuildContext context) {
 
                 try {
                   await apiServices.createTodo(newTodo);
+                  // ignore: use_build_context_synchronously
                   Navigator.of(context).pop();
                 } catch (e) {
                   if (kDebugMode) {
@@ -63,8 +64,8 @@ showNameDialog(BuildContext context) {
                 }
               }
             },
-            child: Text('Add', style: TextStyle(color: Colors.white)),
             style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
+            child: const Text('Add', style: TextStyle(color: Colors.white)),
           ),
         ],
       );

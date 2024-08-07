@@ -28,12 +28,14 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^8.1.4
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
   flutter_staggered_animations: ^1.1.1
   http: ^1.2.2
+  meta: ^1.12.0
 
 dev_dependencies:
   flutter_lints: ^3.0.0

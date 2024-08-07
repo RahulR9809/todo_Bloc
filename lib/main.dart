@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => TodoBloc(ApiServices())..add(GetTodoEvents()),
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         home: HomePage(),
       ),

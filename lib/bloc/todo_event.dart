@@ -9,3 +9,11 @@ class AddToDoEvents extends TodoEvent {
   final Todo toDo;
   AddToDoEvents({required this.toDo});
 }
+
+class LoadMoreTodos extends TodoEvent {}
+
+class UpdateToDoEvent extends TodoEvent {
+  final Todo todo;
+
+  UpdateToDoEvent(this.todo);
+}
